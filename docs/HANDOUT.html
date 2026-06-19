@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otomasi Desain & Dev Aplikasi dengan Agentic AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* === BRAND DNA === */
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --accent-light: #ff6b6b;
+            --bg: #f8f9fa;
+            --surface: #ffffff;
+            --text: #1a1a2e;
+            --text-muted: #6c757d;
+            --border: #e9ecef;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --info: #17a2b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        /* === LAYOUT === */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* === HERO === */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 96px 0 64px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: var(--accent);
+            opacity: 0.1;
+            border-radius: 50%;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            max-width: 800px;
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            font-weight: 300;
+            opacity: 0.9;
+            max-width: 600px;
+            line-height: 1.5;
+        }
+
+        .hero-meta {
+            margin-top: 48px;
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .hero-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hero-meta-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .hero-meta-label {
+            font-size: 12px;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-meta-value {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        /* === SECTIONS === */
+        section {
+            padding: 80px 0;
+        }
+
+        section.alt {
+            background: var(--surface);
+        }
+
+        .section-header {
+            margin-bottom: 48px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .section-desc {
+            font-size: 20px;
+            color: var(--text-muted);
+            max-width: 700px;
+            line-height: 1.6;
+        }
+
+        /* === CARDS === */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .card-meta {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* === TIMELINE === */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 40px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 4px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid var(--surface);
+            box-shadow: 0 0 0 3px var(--accent);
+        }
+
+        .timeline-item.active::before {
+            background: var(--success);
+            box-shadow: 0 0 0 3px var(--success);
+        }
+
+        .timeline-time {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .timeline-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .timeline-desc {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .timeline-tools {
+            margin-top: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tool-tag {
+            background: var(--bg);
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* === CAUTION BOX === */
+        .caution {
+            background: #fff3cd;
+            border-left: 4px solid var(--warning);
+            padding: 24px 24px 24px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 24px 0;
+        }
+
+        .caution-title {
+            font-weight: 600;
+            color: #856404;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .caution p {
+            color: #856404;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .danger {
+            background: #f8d7da;
+            border-left-color: var(--danger);
+        }
+
+        .danger .caution-title,
+        .danger p {
+            color: #721c24;
+        }
+
+        .info {
+            background: #d1ecf1;
+            border-left-color: var(--info);
+        }
+
+        .info .caution-title,
+        .info p {
+            color: #0c5460;
+        }
+
+        /* === CODE BLOCK === */
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 24px;
+            border-radius: 12px;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+
+        .code-block .comment {
+            color: #6a9955;
+        }
+
+        .code-block .keyword {
+            color: #569cd6;
+        }
+
+        .code-block .string {
+            color: #ce9178;
+        }
+
+        /* === TABLE === */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 24px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15px;
+        }
+
+        th {
+            background: var(--primary);
+            color: white;
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tr:hover {
+            background: var(--bg);
+        }
+
+        /* === PRD SECTION === */
+        .prd-section {
+            background: var(--surface);
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 24px 0;
+        }
+
+        .prd-section h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+
+        .prd-section ul {
+            margin-left: 20px;
+            color: var(--text-muted);
+        }
+
+        .prd-section li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        /* === FOOTER === */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 64px 0 32px;
+            margin-top: 80px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .footer-desc {
+            opacity: 0.7;
+            line-height: 1.6;
+        }
+
+        .footer-links h4 {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            opacity: 0.9;
+        }
+
+        .footer-links a {
+            display: block;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            margin-bottom: 8px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 24px;
+            text-align: center;
+            opacity: 0.5;
+            font-size: 14px;
+        }
+
+        /* === PRINT === */
+        @media print {
+            .hero {
+                padding: 48px 0;
+            }
+            .hero h1 {
+                font-size: 36px;
+            }
+            section {
+                padding: 40px 0;
+            }
+            .card {
+                break-inside: avoid;
+            }
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            .section-title {
+                font-size: 28px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-badge">Workshop 2 Sesi &bull; Palembang 2025</div>
+        <h1>Otomasi Desain &amp; Dev Aplikasi dengan Agentic AI</h1>
+        <p class="hero-subtitle">Dari monolitik PHP menuju arsitektur modern: memahami konsep agentic workflow, membangun API, dan menghubungkannya dengan AI melalui MCP.</p>
+        <div class="hero-meta">
+            <div class="hero-meta-item">
+                <div class="hero-meta-icon">📅</div>
+                <div>
+                    <div class="hero-meta-label">Durasi</div>
+                    <div class="hero-meta-value">2 Sesi &times; 3 Jam</div>
+                </div>
+            </div>
+            <div class="hero-meta-item">
+                <div class="hero-meta-icon">👥</div>
+                <div>
+                    <div class="hero-meta-label">Peserta</div>
+                    <div class="hero-meta-value">Mixed Technical Level</div>
+                </div>
+            </div>
+            <div class="hero-meta-item">
+                <div class="hero-meta-icon">🎯</div>
+                <div>
+                    <div class="hero-meta-label">Fokus</div>
+                    <div class="hero-meta-value">Konsep &amp; MVP</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- OVERVIEW -->
+<section>
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag">Ringkasan</div>
+            <h2 class="section-title">Mengapa Workshop Ini Penting?</h2>
+            <p class="section-desc">Anda memiliki aplikasi PHP monolitik yang berjalan bertahun-tahun. Data ada, tapi terkunci. Workshop ini menunjukkan cara membuka kunci data tersebut secara bertahap menggunakan agentic AI.</p>
+        </div>
+
+        <div class="caution danger">
+            <div class="caution-title">⚠️ Perhatian: Bukan Rewrite Total</div>
+            <p>Tujuan kita <strong>bukan</strong> membangun ulang seluruh sistem dalam 6 jam. Tujuan kita adalah memahami konsep dan membangun <strong>MVP (Minimum Viable Product)</strong> yang dapat dikembangkan secara bertahap.</p>
+        </div>
+
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-icon">🔓</div>
+                <h3>Unlock Data</h3>
+                <p>Data akademik Anda sudah ada di MySQL. Kita akan membuat jendela baca (read-only API) sehingga AI dapat mengajukan pertanyaan tanpa mengubah data.</p>
+                <div class="card-meta">Sesi 1 &bull; 1.5 jam</div>
+            </div>
+            <div class="card">
+                <div class="card-icon">🤖</div>
+                <h3>Agentic Query</h3>
+                <p>Setelah API ada, kita hubungkan dengan AI agent (Hermes, Claude, Codex) sehingga dapat menjawab pertanyaan seperti "Berapa pendaftar hari ini?" dalam bahasa alami.</p>
+                <div class="card-meta">Sesi 1 &bull; 1.5 jam</div>
+            </div>
+            <div class="card">
+                <div class="card-icon">🔌</div>
+                <h3>Standardisasi dengan MCP</h3>
+                <p>MCP (Model Context Protocol) memungkinkan API yang sama digunakan oleh berbagai AI tanpa kode integrasi kustom untuk setiap vendor.</p>
+                <div class="card-meta">Sesi 2 &bull; 3 jam</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SESI 1 -->
+<section class="alt">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag">Sesi 1</div>
+            <h2 class="section-title">Pengenalan Konsep &amp; Dev Aplikasi Sederhana</h2>
+            <p class="section-desc">Memahami perbedaan chatbot dan agent, membangun API baca-saja, dan menghubungkannya dengan AI untuk query data akademik.</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item active">
+                <div class="timeline-time">00:00 &mdash; 00:20</div>
+                <div class="timeline-title">Masalah: Data Terkunci</div>
+                <div class="timeline-desc">Aplikasi PHP monolitik Anda menyimpan data mahasiswa, nilai, dan pendaftaran. Tapi hanya aplikasi web yang bisa mengaksesnya. Ketika Rektor bertanya "Berapa pendaftar hari ini?" jam 10 malam, apa yang terjadi?</div>
+                <div class="timeline-tools">
+                    <span class="tool-tag">Whiteboard</span>
+                    <span class="tool-tag">Diskusi</span>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">00:20 &mdash; 00:50</div>
+                <div class="timeline-title">Apa itu Agent?</div>
+                <div class="timeline-desc">Chatbot menjawab dari pengetahuannya. Agent <strong>melakukan sesuatu</strong> &mdash; memanggil API, membaca file, menjalankan kode &mdash; untuk menemukan jawaban yang tidak ia ketahui.</div>
+                <div class="timeline-tools">
+                    <span class="tool-tag">Live Demo</span>
+                    <span class="tool-tag">Hermes Desktop</span>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">00:50 &mdash; 01:30</div>
+                <div class="timeline-title">Membangun API Baca-Saja</div>
+                <div class="timeline-desc">Kita bangun jembatan: API yang hanya bisa membaca data. Seperti pustakawan yang bisa mencari buku tapi tidak bisa membakar perpustakaan.</div>
+                <div class="timeline-tools">
+                    <span class="tool-tag">FastAPI</span>
+                    <span class="tool-tag">SQLite</span>
+                    <span class="tool-tag">Python</span>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">01:30 &mdash; 02:15</div>
+                <div class="timeline-title">Menghubungkan ke Hermes</div>
+                <div class="timeline-desc">Hermes memanggil API kita. Kita tanya dalam bahasa alami, Hermes menerjemahkan ke API call, lalu merangkum jawabannya.</div>
+                <div class="timeline-tools">
+                    <span class="tool-tag">Hermes Desktop</span>
+                    <span class="tool-tag">Web Tool</span>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">02:15 &mdash; 03:00</div>
+                <div class="timeline-title">Momen "Aha" &amp; Peringatan</div>
+                <div class="timeline-desc">Peserta non-teknis mencoba bertanya. Lalu kita tunjukkan: API ini tanpa autentikasi. Siapa saja di jaringan bisa mengunduh semua data. Ini adalah <strong>artifak pengajaran</strong>, bukan produksi.</div>
+                <div class="timeline-tools">
+                    <span class="tool-tag">Q&amp;A</span>
+                    <span class="tool-tag">Diskusi</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="caution info">
+            <div class="caution-title">💡 Untuk Peserta Non-Teknis</div>
+            <p>Anda tidak perlu memahami kode Python. Fokus pada <strong>konsep</strong>: data yang tadinya terkunci kini dapat ditanyakan dengan bahasa alami. Bayangkan bertanya ke asisten pintar: "Berapa mahasiswa aktif?" dan mendapat jawaban langsung.</p>
+        </div>
+    </div>
+</section>
+
+<!-- SESI 2 -->
+<section>
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag">Sesi 2</div>
+            <h2 class="section-title">Full Stack Design &amp; Build dengan MCP</h2>
+            <p class="section-desc">Mengapa setiap AI memerlukan kode integrasi kustom? MCP (Model Context Protocol) adalah solusi standar. Kita juga belajar menulis PRD yang benar.</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item active">
+                <div class="timeline-time">00:00 &mdash; 00:30</div>
+                <div class="timeline-title">Rekapitulasi &amp; Konsep MCP</div>
+                <div class="timeline-desc">Sebelum MCP: Hermes butuh kode kustom, Claude butuh kode kustom, Codex butuh kode kustom. Setelah MCP: satu server standar, bekerja dengan semua AI. Seperti USB untuk AI.</div>
+                <div class="timeline-tools">
+                    <span class="tool-tag">Diagram</span>
+                    <span class="tool-tag">Analogi</span>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">00:30 &mdash; 01:30</div>
+                <div class="timeline-title">Membangun MCP Server</div>
+                <div class="timeline-desc">Kita bungkus API kemarin dalam server MCP sederhana (HTTP-based). Dua endpoint: <code>/tools/list</code> (apa yang bisa dilakukan?) dan <code>/tools/call</code> (lakukan!).</div>
+                <div class="timeline-tools">
+                    <span class="tool-tag">Python</span>
+                    <span class="tool-tag">HTTP</span>
+                    <span class="tool-tag">curl</span>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">01:30 &mdash; 02:15</div>
+                <div class="timeline-title">Multi-Agent Demo</div>
+                <div class="timeline-desc">Satu MCP server, tiga konsumen: Hermes (via web tool), Claude Code (via MCP client), dan curl (manual). Ini membuktikan <strong>tidak ada vendor lock-in</strong>.</div>
+                <div class="timeline-tools">
+                    <span class="tool-tag">Hermes</span>
+                    <span class="tool-tag">Claude Code</span>
+                    <span class="tool-tag">curl</span>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">02:15 &mdash; 02:45</div>
+                <div class="timeline-title">PRD yang Benar</div>
+                <div class="timeline-desc">AI membangun apa yang Anda minta. Jika Anda tidak menentukan load, security, dan skalabilitas &mdash; AI tidak akan membangunnya. Kita pelajari template PRD lengkap dengan Non-Functional Requirements.</div>
+                <div class="timeline-tools">
+                    <span class="tool-tag">Template PRD</span>
+                    <span class="tool-tag">Diskusi</span>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">02:45 &mdash; 03:00</div>
+                <div class="timeline-title">Roadmap &amp; Penutup</div>
+                <div class="timeline-desc">Fase 1: API baca. Fase 2: MCP + auth. Fase 3: Microservices. Fase 4: Agentic layer. Tidak perlu rewrite total &mdash; satu endpoint adalah kemenangan.</div>
+                <div class="timeline-tools">
+                    <span class="tool-tag">Q&amp;A</span>
+                    <span class="tool-tag">Resources</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRD TEMPLATE -->
+<section class="alt">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag">Dokumentasi</div>
+            <h2 class="section-title">Template PRD: Project Requirements Document</h2>
+            <p class="section-desc">AI akan membangun apa yang Anda tulis. Jika Anda tidak menulisnya, AI tidak akan membangunnya. Template ini memastikan tidak ada yang terlewat.</p>
+        </div>
+
+        <div class="caution">
+            <div class="caution-title">⚠️ Mengapa PRD Ini Berbeda?</div>
+            <p>Kebanyakan PRD hanya berisi <em>functional requirements</em> (fitur apa yang dibuat). PRD ini memaksa Anda mendefinisikan <strong>non-functional requirements</strong>: berapa user simultan? berapa uptime? apa ancaman security? Tanpa ini, AI akan membangun sistem yang bekerja di laptop Anda dan runtuh di produksi.</p>
+        </div>
+
+        <div class="prd-section">
+            <h4>1. Problem Statement</h4>
+            <ul>
+                <li>Apa masalah bisnis yang diselesaikan?</li>
+                <li>Mengapa sekarang?</li>
+                <li>Seperti apa suksesnya?</li>
+            </ul>
+        </div>
+
+        <div class="prd-section">
+            <h4>2. Functional Requirements</h4>
+            <ul>
+                <li>Apa yang harus sistem LAKUKAN?</li>
+                <li>User stories: Sebagai [user], saya ingin [fitur], sehingga [manfaat]</li>
+                <li>Prioritas: Must have / Should have / Could have</li>
+            </ul>
+        </div>
+
+        <div class="prd-section">
+            <h4>3. Non-Functional Requirements (NFR) — PENTING!</h4>
+            <ul>
+                <li><strong>Performance:</strong> Berapa concurrent user? Berapa RPS? Response time target?</li>
+                <li><strong>Availability:</strong> Berapa % uptime? (99.9% = 8.7 jam downtime/tahun)</li>
+                <li><strong>Security:</strong> Metode autentikasi? Role-based access? Klasifikasi data sensitivitas?</li>
+                <li><strong>Scalability:</strong> Load saat ini? Pertumbuhan yang diharapkan?</li>
+                <li><strong>Maintainability:</strong> Skill tim? Dokumentasi yang dibutuhkan?</li>
+            </ul>
+        </div>
+
+        <div class="prd-section">
+            <h4>4. Constraints &amp; Assumptions</h4>
+            <ul>
+                <li>Harus bekerja dengan MySQL yang ada?</li>
+                <li>Budget terbatas?</li>
+                <li>Tim hanya 2 developer part-time?</li>
+                <li>Data tidak boleh keluar dari jaringan universitas?</li>
+            </ul>
+        </div>
+
+        <div class="prd-section">
+            <h4>5. Acceptance Criteria</h4>
+            <ul>
+                <li>Bagaimana kita TAHU ini selesai?</li>
+                <li>Testable: "API mengembalikan student count dalam < 2 detik"</li>
+                <li>Security: "Attempt DELETE request menghasilkan 405 error"</li>
+            </ul>
+        </div>
+
+        <div class="prd-section">
+            <h4>6. Risk Register</h4>
+            <ul>
+                <li>Database performance menurun saat peak</li>
+                <li>Akses data tidak sah (no auth)</li>
+                <li>Tim kurang skill Python</li>
+                <li>AI memberikan jawaban salah</li>
+                <li>Scope creep (tambahan fitur tanpa kontrol)</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- CAUTIONARY TALES -->
+<section>
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag">Peringatan</div>
+            <h2 class="section-title">Cautionary Tales: Ketika Agentic Workflow Salah</h2>
+            <p class="section-desc">AI tidak menghilangkan engineering yang buruk. AI membuat engineering buruk menjadi lebih cepat. Cerita-cerita ini nyata dan terjadi di industri.</p>
+        </div>
+
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-icon" style="background: linear-gradient(135deg, #dc3545, #ff6b6b);">💥</div>
+                <h3>Tale 1: "Works on My Machine"</h3>
+                <p>API dibangun AI bekerja sempurna dengan 10 data test. Saat 5,000 mahasiswa mendaftar bersamaan, sistem lock-up. Database SQLite single-writer tidak sanggup.</p>
+                <div class="card-meta"><strong>Pelajaran:</strong> Tentukan load requirement di PRD. Load test sebelum produksi.</div>
+            </div>
+            <div class="card">
+                <div class="card-icon" style="background: linear-gradient(135deg, #dc3545, #ff6b6b);">🗑️</div>
+                <h3>Tale 2: Agent yang Menghapus Data</h3>
+                <p>AI assistant diberi akses tulis. Kepala departemen bilang: "Hapus mahasiswa yang belum bayar." Agent menghapus 200 record. Tidak ada backup. Tidak ada audit trail.</p>
+                <div class="card-meta"><strong>Pelajaran:</strong> API baca-saja dulu. Tulis butuh approval manusia.</div>
+            </div>
+            <div class="card">
+                <div class="card-icon" style="background: linear-gradient(135deg, #dc3545, #ff6b6b);">🔓</div>
+                <h3>Tale 3: API "Aman" Tanpa Auth</h3>
+                <p>API internal "diamankan" dengan firewall. Mahasiswa menemukan endpoint dan mengunduh 10,000 record data pribadi. Data breach.</p>
+                <div class="card-meta"><strong>Pelajaran:</strong> Jika tidak ada auth, itu publik. Internet sangat pandai menemukan.</div>
+            </div>
+            <div class="card">
+                <div class="card-icon" style="background: linear-gradient(135deg, #ffc107, #ffdb58);">🔒</div>
+                <h3>Tale 4: Vendor Lock-In</h3>
+                <p>Universitas membangun seluruh workflow di Claude. Anthropic ubah harga. Tidak bisa pindah karena semua integrasi kustom. Terjebak.</p>
+                <div class="card-meta"><strong>Pelajaran:</strong> Gunakan standar (MCP). Test dengan multiple agents.</div>
+            </div>
+            <div class="card">
+                <div class="card-icon" style="background: linear-gradient(135deg, #ffc107, #ffdb58);">🎭</div>
+                <h3>Tale 5: "Vibe Coded" Production</h3>
+                <p>Portal mahasiswa dibangun AI dalam semalam. 3 bulan kemudian: tidak ada yang mengerti strukturnya, tidak ada test, developer asli sudah resign.</p>
+                <div class="card-meta"><strong>Pelajaran:</strong> AI menulis kode. AI tidak memiliki kode. Anda yang memiliki dan memeliharanya.</div>
+            </div>
+            <div class="card">
+                <div class="card-icon" style="background: linear-gradient(135deg, #ffc107, #ffdb58);">📋</div>
+                <h3>Tale 6: PRD yang Tidak Ada</h3>
+                <p>"Bangun sistem registrasi." AI membangun sesuatu. Punya fitur chatbot yang tidak diminta. Tidak bisa export ke finance. Setelah 3 bulan, dibuang.</p>
+                <div class="card-meta"><strong>Pelajaran:</strong> AI adalah implementor brilian dan product manager buruk. Anda harus jadi product manager.</div>
+            </div>
+        </div>
+
+        <div class="caution info" style="margin-top: 48px;">
+            <div class="caution-title">🎯 Meta-Lesson</div>
+            <p><strong>AI tidak membuat engineering buruk hilang. AI membuat engineering buruk lebih cepat.</strong> Tujuan workshop ini bukan membangun lebih cepat. Tujuan adalah membangun dengan <strong>BENAR</strong>, dengan AI sebagai alat, bukan pengganti berpikir.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="alt">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag">Perencanaan</div>
+            <h2 class="section-title">Roadmap: Dari Monolitik ke Modern</h2>
+            <p class="section-desc">Tidak perlu rewrite total. Satu endpoint adalah kemenangan. Lakukan secara bertahap.</p>
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fase</th>
+                        <th>Durasi</th>
+                        <th>Apa yang Dibangun</th>
+                        <th>Nilai Bisnis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Fase 1</strong><br><small style="color: var(--text-muted)">Read-Only API</small></td>
+                        <td>3 bulan</td>
+                        <td>Endpoint lookup mahasiswa, laporan nilai, statistik pendaftaran</td>
+                        <td>Rektor bisa bertanya kapan saja</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fase 2</strong><br><small style="color: var(--text-muted)">MCP + Auth</small></td>
+                        <td>3 bulan</td>
+                        <td>Standardisasi dengan MCP, autentikasi, rate limiting</td>
+                        <td>Berbagai AI dapat digunakan, data aman</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fase 3</strong><br><small style="color: var(--text-muted)">Write dengan Approval</small></td>
+                        <td>6 bulan</td>
+                        <td>Update data mahasiswa (dengan approval admin), audit trail</td>
+                        <td>Proses administrasi lebih cepat</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fase 4</strong><br><small style="color: var(--text-muted)">Microservices</small></td>
+                        <td>12+ bulan</td>
+                        <td>Ekstrak service mahasiswa, finance, dosen secara independen</td>
+                        <td>Tim dapat deploy secara independen</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fase 5</strong><br><small style="color: var(--text-muted)">Agentic Layer</small></td>
+                        <td>Ongoing</td>
+                        <td>WhatsApp bot untuk pertanyaan, laporan otomatis, prediksi risiko</td>
+                        <td>Asisten pintar untuk seluruh universitas</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- TECH STACK -->
+<section>
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag">Tools</div>
+            <h2 class="section-title">Tech Stack Workshop</h2>
+            <p class="section-desc">Tools yang digunakan dan alternatifnya. Ingat: konsep lebih penting dari tools.</p>
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fungsi</th>
+                        <th>Workshop</th>
+                        <th>Alternatif</th>
+                        <th>Catatan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>AI Agent</td>
+                        <td>Hermes Desktop</td>
+                        <td>Claude Code, Codex, ChatGPT</td>
+                        <td>Hermes = multi-provider, tidak vendor lock-in</td>
+                    </tr>
+                    <tr>
+                        <td>Backend API</td>
+                        <td>FastAPI + SQLite</td>
+                        <td>Flask, Django, Node.js</td>
+                        <td>SQLite untuk demo; produksi = PostgreSQL/MySQL</td>
+                    </tr>
+                    <tr>
+                        <td>MCP Server</td>
+                        <td>HTTP-based (simplified)</td>
+                        <td>Official MCP SDK</td>
+                        <td>HTTP = mudah dipahami; SDK = untuk produksi</td>
+                    </tr>
+                    <tr>
+                        <td>Database</td>
+                        <td>SQLite (mock data)</td>
+                        <td>MySQL, PostgreSQL, Supabase</td>
+                        <td>Mock data = tidak perlu koneksi internet</td>
+                    </tr>
+                    <tr>
+                        <td>Testing API</td>
+                        <td>curl</td>
+                        <td>Postman, HTTPie</td>
+                        <td>curl = tersedia di hampir semua sistem</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-brand">Otomasi Desain &amp; Dev Aplikasi</div>
+                <p class="footer-desc">Workshop agentic AI untuk institusi akademik di Palembang. Dari monolitik PHP menuju arsitektur modern dengan AI sebagai alat, bukan pengganti engineering.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Sesi 1</h4>
+                <a href="#">Konsep Agentic</a>
+                <a href="#">Build API</a>
+                <a href="#">Connect to AI</a>
+            </div>
+            <div class="footer-links">
+                <h4>Sesi 2</h4>
+                <a href="#">MCP Standard</a>
+                <a href="#">Multi-Agent</a>
+                <a href="#">PRD &amp; Roadmap</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Handout ini dibuat dengan menerapkan 20 design principles dari Power Design. Didesain untuk dicetak atau dibaca digital.</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
