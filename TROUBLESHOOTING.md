@@ -421,7 +421,7 @@ rm -rf palembang-workshop       (Mac)
 rmdir /s /q palembang-workshop  (Windows)
 
 # 2. Clone again
-git clone https://github.com/asahfikir/palembang-workshop.git
+git clone https://github.com/asahfikir/pct-ai-workshop.git
 
 # 3. Recreate venv
 cd palembang-workshop
