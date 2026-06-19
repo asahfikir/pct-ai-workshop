@@ -18,7 +18,7 @@
 
 ```bash
 git clone https://github.com/asahfikir/pct-ai-workshop.git
-cd palembang-workshop
+cd pct-ai-workshop
 uv venv && uv pip install -r requirements.txt
 python api/mock_database.py
 ```

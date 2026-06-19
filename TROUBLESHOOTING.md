@@ -82,7 +82,7 @@ uv pip install -r requirements.txt
 **Fix:**
 ```bash
 # Make sure you're in the right folder
-cd Documents\palembang-workshop
+cd Documents\pct-ai-workshop
 
 # Check if .git folder exists
 ls .git   (Mac)
@@ -91,7 +91,7 @@ dir .git  (Windows)
 # If not, clone again:
 cd ..
 git clone https://github.com/YOUR_USERNAME/palembang-workshop.git
-cd palembang-workshop
+cd pct-ai-workshop
 ```
 
 ---
@@ -355,11 +355,11 @@ curl http://localhost:8000/health
 **Fix:**
 ```bash
 # Both of these work in most modern Windows terminals:
-cd Documents\palembang-workshop
-cd Documents/palembang-workshop
+cd Documents\pct-ai-workshop
+cd Documents/pct-ai-workshop
 
 # For paths with spaces, use quotes:
-cd "My Documents/palembang-workshop"
+cd "My Documents/pct-ai-workshop"
 ```
 
 ---
@@ -372,10 +372,10 @@ cd "My Documents/palembang-workshop"
 ```bash
 # Always navigate first
 cd Documents
-cd palembang-workshop
+cd pct-ai-workshop
 
 # Or in one line:
-cd Documents\palembang-workshop
+cd Documents\pct-ai-workshop
 ```
 
 ---
@@ -424,7 +424,7 @@ rmdir /s /q palembang-workshop  (Windows)
 git clone https://github.com/asahfikir/pct-ai-workshop.git
 
 # 3. Recreate venv
-cd palembang-workshop
+cd pct-ai-workshop
 uv venv
 .venv\Scripts\activate     (Windows)
 source .venv/bin/activate  (Mac)

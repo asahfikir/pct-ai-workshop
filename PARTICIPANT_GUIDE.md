@@ -103,7 +103,7 @@ git clone https://github.com/asahfikir/pct-ai-workshop.git
 
 **Verify it worked:**
 ```bash
-cd palembang-workshop
+cd pct-ai-workshop
 ls
 ```
 

@@ -64,7 +64,7 @@ For those who want to run locally:
 ```bash
 # Clone the repo
 git clone https://github.com/asahfikir/pct-ai-workshop.git
-cd palembang-workshop
+cd pct-ai-workshop
 
 # Setup (one time)
 uv venv
