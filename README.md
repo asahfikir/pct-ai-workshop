@@ -63,7 +63,7 @@ If participants don't have Python or can't install packages, they can still:
 For those who want to run locally:
 ```bash
 # Clone the repo
-git clone https://github.com/YOUR_USERNAME/palembang-workshop.git
+git clone https://github.com/asahfikir/palembang-workshop.git
 cd palembang-workshop
 
 # Setup (one time)

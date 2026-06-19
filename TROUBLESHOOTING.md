@@ -415,13 +415,13 @@ alias python=python3
 If you've tried everything and nothing works:
 
 ```bash
-# 1. Delete everything and start fresh
+# Delete everything and start fresh
 cd Documents
 rm -rf palembang-workshop       (Mac)
 rmdir /s /q palembang-workshop  (Windows)
 
 # 2. Clone again
-git clone https://github.com/YOUR_USERNAME/palembang-workshop.git
+git clone https://github.com/asahfikir/palembang-workshop.git
 
 # 3. Recreate venv
 cd palembang-workshop

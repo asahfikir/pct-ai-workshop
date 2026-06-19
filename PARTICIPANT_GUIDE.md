@@ -94,7 +94,7 @@ cd Documents
 ```
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/palembang-workshop.git
+git clone https://github.com/asahfikir/palembang-workshop.git
 ```
 
 **Replace `YOUR_USERNAME` with the actual GitHub username.**

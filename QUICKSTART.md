@@ -17,7 +17,7 @@
 ## One-Command Setup
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/palembang-workshop.git
+git clone https://github.com/asahfikir/palembang-workshop.git
 cd palembang-workshop
 uv venv && uv pip install -r requirements.txt
 python api/mock_database.py
